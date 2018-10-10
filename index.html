@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>RudyBlue Overlay</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!--<h1 class="gameName"></h1>-->
+        <!-- Images are for social media icons and names -->
+        <div class="vertOne"></div>
+		<div class="vertTwo"></div>
+		<div class="frame"></div>
+		<img id="logo" src="#" />
+		<div id="container">
+		  
+		  <div class="lines" id="topDonation">
+			<p><img src="#" />RudyBlue</p>
+			<div class="line one"></div>
+			<div class="line two"></div>
+			<div class="line three"></div>
+			
+		  </div>
+		  
+		  <div class="lines" id="rDonation">
+			<p><img src="#" />RudyBlue</p>
+			<div class="line one"></div>
+			<div class="line two"></div>
+			<div class="line three"></div>
+			
+		  </div>
+		  
+		  <div class="lines" id="topBits">
+			<p><img src="#" />RudyBlue</p>
+			<div class="line one"></div>
+			<div class="line two"></div>
+			<div class="line three"></div>
+			
+		  </div>
+		  
+		  <div class="lines" id="rBits">
+			<p><img src="#" />RudyBlue</p>
+			<div class="line one"></div>
+			<div class="line two"></div>
+			<div class="line three"></div>
+			
+		  </div>
+		  
+		  <div class="lines" id="rSub">
+			<p><img src="#" />RudyBlue</p>
+			<div class="line one"></div>
+			<div class="line two"></div>
+			<div class="line three"></div>
+			
+		  </div>
+		</div>
+
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js' type='text/javascript'></script>
+    <script type='text/javascript'>
+		$.ajax({
+            /* [https://api.twitch.tv/kraken/channels/rudyblue?client_id=1ee207i1v8skpg1olcecn416eijzrw] is called and info is pulled */
+			type: "GET",
+			url: "https://api.twitch.tv/kraken/channels/rudyblue/",
+			headers:{
+			  'Client-ID': '1ee207i1v8skpg1olcecn416eijzrw'
+			},
+			success: function(data){
+			  $('.gameName').append(data.game)
+			}    
+		});
+	</script>
+    <script type="text/javascript">
+        /* 
+        
+        Streamlabs Socket: 
+        eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiI6IkNGNENGNDlDQzI0NjNGRjZCOUU1IiwicmVhZF9vbmx5Ijp0cnVlLCJwcmV2ZW50X21hc3RlciI6dHJ1ZSwidHdpdGNoX2lkIjoiMTI2Nzg3NjU2In0.wOLVRkTkGJqNORu-ngUeqlSYW13NPqKH7U0OFchmd0E
+        
+        */
+        
+        var topD = 0;
+		var topB = 0;
+		
+		// SOCKET TOKEN
+		const socketToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiI6IkNGNENGNDlDQzI0NjNGRjZCOUU1IiwicmVhZF9vbmx5Ijp0cnVlLCJwcmV2ZW50X21hc3RlciI6dHJ1ZSwidHdpdGNoX2lkIjoiMTI2Nzg3NjU2In0.wOLVRkTkGJqNORu-ngUeqlSYW13NPqKH7U0OFchmd0E'; 
+		  
+		//Connect to socket
+		const streamlabs = io(`https://sockets.streamlabs.com?token=${socketToken}`, {transports: ['websocket']});
+        
+        //Perform Action on event
+		streamlabs.on('event', (eventData) => {
+            console.log(eventData);
+
+            /* Subscription Event */
+            if (eventData.type == 'subscription'){
+            $('#recSub').html(eventData.message[0].name)
+            }
+
+            /* Donation Event */       
+            if (eventData.type == 'donation'){
+            $('#recDono').html(eventData.message[0].name + ' ' + eventData.message[0].formatted_amount)
+            
+            /* Top Donation */
+            if (eventData.message[0].amount > topD){
+                topD = eventData.message[0].amount
+                $('#topDono').html(eventData.message[0].name + ' ' + eventData.message[0].formatted_amount)
+                }
+            }
+            
+            /* Bits Event */
+            if (eventData.type == 'bits'){
+            $('#recBit').html(eventData.message[0].name + ' ' + eventData.message[0].amount + 'bits')
+            
+            /* Top Bits */
+            if (parseInt(eventData.message[0].amount) > topB){
+                topB = parseInt(eventData.message[0].amount)
+                $('#topBit').html(eventData.message[0].name + ' ' + eventData.message[0].amount + 'bits')
+                }
+            }	 
+		});
+        
+    </script>
+</html>

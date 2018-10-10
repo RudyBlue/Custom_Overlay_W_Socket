@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto');
+
+html {
+    background-color: green;
+}
+
+#container {
+    width: 800px;
+    top: 570px;
+    left: 80px;
+    position: absolute;
+}
+
+#logo {
+    width: 300px;
+    position: absolute; 
+    top: 400px;
+    left: -45px;
+    z-index: 999;
+}
+
+.frame {
+    width: 800px;
+    height: 450px;
+    border: 20px solid #202020;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+.lines {
+    width: 100%;
+    font-family: 'Lato';
+    color: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+  
+}
+.vertOne {
+	background: #404040;
+	width: 20px;
+	height: 480px;
+	position: absolute;
+	left: 80px; 
+	top: 120px;
+	z-index: 777;
+}
+
+.vertTwo {
+    background: #606060;
+    width: 20px;
+    height: 480px;
+    position: absolute;
+    left: 60px; 
+    top: 140px;
+    z-index: 777;
+}
+
+.line {
+    height: 20px;
+    background: #efefef;
+}
+
+.lines p {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    text-align: left;
+    opacity: 0;
+    width: 800px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 60px;
+    text-transform: uppercase;
+}
+
+.lines p img {
+    width: 100px;
+    height: 60px;
+    vertical-align: top;
+}
+
+/* DONO */
+#topDonation .line.one { 
+    background: #202020;
+    width: 0%;
+    animation: 30s slide ease-out forwards infinite; 
+}
+
+#topDonation .line.two {
+    background: #404040;
+    width: 0%;
+    padding-right: 40px;
+    animation: 30s slide .25s ease-out forwards infinite;
+}
+
+#topDonation .line.three {
+    background: #606060;
+    width: 0%;
+    padding-right: 20px;
+    animation: 30s slide .5s ease-out forwards infinite;
+}
+
+#topDonation.lines p {
+    animation: 30s fade ease-out forwards infinite;
+}
+
+/* rDONO */
+#rDonation .line.one {
+    background: #202020;
+    width: 0%;
+    animation: 30s slide 6s ease-out forwards infinite; 
+}
+#rDonation .line.two {
+    background: #404040;
+    width: 0%;
+    padding-right: 40px;
+    animation: 30s slide 6.25s ease-out forwards infinite;
+}
+#rDonation .line.three {
+    background: #606060;
+    width: 0%;
+    padding-right: 20px;
+    animation: 30s slide 6.5s ease-out forwards infinite;
+}
+
+#rDonation.lines p {
+    animation: 30s fade 6s ease-out forwards infinite;
+}
+
+/* BITS */
+#topBits .line.one {
+    background: #202020;
+    width: 0%;
+    animation: 30s slide 12s ease-out forwards infinite; 
+}
+#topBits .line.two {
+    background: #404040;
+    width: 0%;
+    padding-right: 40px;
+    animation: 30s slide 12.25s ease-out forwards infinite;
+}
+#topBits .line.three {
+    background: #606060;
+    width: 0%;
+    padding-right: 20px;
+    animation: 30s slide 12.5s ease-out forwards infinite;
+}
+#topBits.lines p {
+    animation: 30s fade 12s ease-out forwards infinite;
+}
+
+/* rBITS */
+#rBits .line.one {
+    background: #202020;
+    width: 0%;
+    animation: 30s slide 18s ease-out forwards infinite; 
+}
+
+#rBits .line.two {
+    background: #404040;
+    width: 0%;
+    padding-right: 40px;
+    animation: 30s slide 18.25s ease-out forwards infinite;
+}
+
+#rBits .line.three {
+    background: #606060;
+    width: 0%;
+    padding-right: 20px;
+    animation: 30s slide 18.5s ease-out forwards infinite;
+}
+
+#rBits.lines p {
+    animation: 30s fade 18s ease-out forwards infinite;
+}
+
+/* rSUB */
+#rSub .line.one {
+    background: #202020;
+    width: 0%;
+    animation: 30s slide 24s ease-out forwards infinite; 
+}
+
+#rSub .line.two {
+    background: #404040;
+    width: 0%;
+    padding-right: 40px;
+    animation: 30s slide 24.25s ease-out forwards infinite;
+}
+
+#rSub .line.three {
+    background: #606060;
+    width: 0%;
+    padding-right: 20px;
+    animation: 30s slide 24.5s ease-out forwards infinite;
+}
+
+#rSub.lines p {
+    animation: 30s fade 24s ease-out forwards infinite;
+}
+
+.content {
+    font-family: 'Roboto';
+    letter-spacing: 1.5px;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+@keyframes slide {
+    0%{ width: 0%; }
+    1%{ width: 100%; }
+    15%{ width: 100%; }
+    16%{ width: 0%; }
+    100%{ width: 0%; }
+}
+
+@keyframes fade {
+    0%{ opacity: 0; }
+    2%{ opacity: 0; }
+    3%{ opacity: 1; }
+    15%{ opacity: 1; }
+    16%{ opacity: 0; }
+    100%{ opacity: 0; }
+}
